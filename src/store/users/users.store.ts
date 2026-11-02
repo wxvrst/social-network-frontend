@@ -26,7 +26,7 @@ export const useUsersStore = defineStore("users", () => {
 
 		try {
 			const result = await userApi.getUser(id);
-			currentUser.value = result;
+			currentUser.value = result;//TODO: УБРАТЬ СКОРЕЕ ВСЕГО
 		} catch (err) {
 			error.value = (err as Error).message;
 		} finally {

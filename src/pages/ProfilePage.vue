@@ -7,7 +7,9 @@ const userStore = useUsersStore();
 const { currentUser } = storeToRefs(userStore);
 const { fetchUser } = userStore;
 
-onMounted(async () => await fetchUser(1));//TODO: заменить значние на текущего пользователя
+onMounted(async () => {
+	await fetchUser(10);
+}); //TODO: заменить значние на текущего пользователя
 
 const handleClickChat = () => {};
 const handleClickCall = () => {};

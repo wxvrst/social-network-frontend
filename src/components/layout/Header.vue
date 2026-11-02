@@ -43,7 +43,7 @@ const links: Link[] = [
 					v-for="(link, index) in links"
 					:key="index"
 					:to="link.href"
-					class="bg-white text-black aspect-square w-12 rounded-full overflow-hidden flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors duration-300"
+					class="bg-white text-black aspect-square w-12 rounded-full overflow-hidden flex items-center justify-center hover:bg-blue-600 hover:text-white hover:brightness-70 transition duration-200"
 				>
 					<img
 						v-if="link.image"

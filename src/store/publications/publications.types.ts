@@ -1,11 +1,8 @@
-import type { User } from "../users/users.types";
-
 interface Publication {
 	id: number;
 	author_id: number;
-	author: User; //Временно
 	description: string;
-	image: string;
+	image?: string;
 	date_added: string;
 }
 // TODO: убрать author_id, если настроить и будет браться из токена

@@ -22,6 +22,7 @@ export const userPublicationsStore = defineStore("publications", () => {
 			isLoading.value = false;
 		}
 	};
+	//TODO: ДОБАВИТЬ РУЧКУ ПО ID АВТОРА
 	const fetchPublication = async (id: number): Promise<void> => {
 		isLoading.value = true;
 		error.value = null;

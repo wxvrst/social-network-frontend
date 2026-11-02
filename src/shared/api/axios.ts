@@ -1,4 +1,4 @@
 import axios from "axios";
 
-export const apiPublication = axios.create({ baseURL: "/api/publication" });
-export const apiUser = axios.create({ baseURL: "/api/user" });
+export const apiPublication = axios.create({ baseURL: "/api/publications" });
+export const apiUser = axios.create({ baseURL: "/api/users" });

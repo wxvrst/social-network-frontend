@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import type { Publication } from "@/store/publications";
 import { EllipsisH, User } from "@primeicons/vue";
+import { useUsersStore } from "@/store/users/users.store";
 
 const props = defineProps<{
 	publication: Publication;
 }>();
+
+const userStore = useUsersStore();
+const { currentUser } = storeToRefs(userStore);
+const { fetchUser } = userStore;
+
+onMounted(async () => {
+	await fetchUser(props.publication.author_id);
+});
 
 const test = ref<boolean>(false);
 const router = useRouter();
@@ -19,10 +28,13 @@ const handleToAccount = () => {
 
 <template>
 	<div class="border-b border-white/10 flex flex-col p-3">
-		<div class="relative flex gap-2 self-start w-full">
+		<div
+			v-if="currentUser"
+			class="relative flex gap-2 self-start w-full"
+		>
 			<img
-				v-if="publication.author.avatar"
-				:src="publication.author.avatar"
+				v-if="currentUser.avatar"
+				:src="currentUser.avatar"
 				alt="avatar"
 				class="bg-white text-black aspect-square w-12 rounded-full overflow-hidden hover:brightness-80 transition duration-200 cursor-pointer"
 				@click="handleToAccount()"
@@ -36,13 +48,13 @@ const handleToAccount = () => {
 				class="h-fit underline decoration-transparent transition-colors duration-200 hover:decoration-white cursor-pointer"
 				@click="handleToAccount()"
 			>
-				{{ publication.author.name }}
+				{{ currentUser.name }}
 			</span>
 			<span
 				class="h-fit text-white/40 hover:text-white/80 transition-colors duration-200 cursor-pointer"
 				@click="handleToAccount()"
 			>
-				@{{ publication.author.username }}
+				@{{ currentUser.username }}
 			</span>
 			<span>{{ publication.date_added }}</span>
 			<button
