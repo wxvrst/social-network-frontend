@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Cog, Bell, User } from "@primeicons/vue";
 import image from "@/assets/avatar.jpg";
-import logo from "@/assets/logo.vue";
 import type { Link } from "@/shared/types/types";
 
 const links: Link[] = [
@@ -33,8 +32,7 @@ const links: Link[] = [
 					to="/"
 					class="flex tracking-widest text-4xl font-normal"
 				>
-					<logo class="size-9" />
-					reue
+					Frosch
 				</router-link>
 			</li>
 
