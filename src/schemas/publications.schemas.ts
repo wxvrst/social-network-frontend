@@ -1,0 +1,19 @@
+import { z } from "zod";
+
+export const createPublicationSchema = z.object({
+	author_id: z.number().int().positive(), //TODO: убрать после auth
+	description: z.string().trim().min(1, "Empty description").max(200),
+	image: z.string().trim().min(1, "Empty string").max(500).optional(),
+});
+
+export const updatePublicationSchema = createPublicationSchema.omit({ author_id: true }).partial();
+
+export const publicationSchema = createPublicationSchema.extend({
+	id: z.number().int().positive(),
+	author_id: z.number().int().positive(),
+	date_added: z.string(),
+});
+
+export type CreatePublicationInput = z.infer<typeof createPublicationSchema>;
+export type UpdatePublicationInput = z.infer<typeof updatePublicationSchema>;
+export type Publication = z.infer<typeof publicationSchema>;

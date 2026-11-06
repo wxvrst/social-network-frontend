@@ -1,16 +1,6 @@
-interface User {
-	id: number;
-	username: string;
-	name: string;
-	description?: string;
-	avatar?: string;
-	additional?: {
-		label: string;
-		value: string;
-	}[];
-}
-
-type CreateUser = Omit<User, "id">;
-type UpdateUser = Partial<Omit<User, "id">>;
-
+import type {
+	CreateUserInput as CreateUser,
+	UpdateUserInput as UpdateUser,
+	User,
+} from "@/schemas/users.schemas";
 export type { User, CreateUser, UpdateUser };
